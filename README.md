@@ -8,16 +8,16 @@ This guide will provide step-by-step instructions in implementing and configurin
 - [OpenCTI Prerequisites](#opencti-prerequisites)
   - [SSH to the VM](#connect-to-azure-vm-via-ssh)
     - [ElasticSearch Requirements](#elasticsearch-requirements)
-  - [Install Docker Enginer](#install-docker-enginer)
+  - [Install Docker Engine](#install-docker-engine)
   - [Install Portainer](#install-portainer)
 - [Deploy OpenCTI Stack](#deploy-opencti-stack)
   - [OpenCTI Production Containers](#opencti-production-containers)
   - [Configure Env Variables](#configure-env-variables)
   - [Sign in to OpenCTI](#sign-in-to-opencti)
   - [Configure Connectors](#configure-connectors)
-    - [Connector Import Document](#connector-import-document)
-    - [Connector MITRE Datasets](#connector-mitre-datasets)
-    - [Connector Cybercrime Tracker](#connector-cybercrime-tracker)
+    - [ Import Document](#connector-import-document)
+    - [ MITRE Datasets](#connector-mitre-datasets)
+    - [ Cybercrime Tracker](#connector-cybercrime-tracker)
 - [Platform Overview](#platform-overview)
     - [Conclude](#conclude)
 
@@ -80,7 +80,7 @@ Replace "Source IP Group" with the appropriate IP address range or security grou
 
 ## OpenCTI Prerequisites
 
-We picked Azure Vm as our host for the platform, we will first use Docker Engine to then deploy Portainer, a user-friendly container management platform that will help us with the onboarding with [the containers required](#opencti-production-containers).
+We picked Azure Vm as our host for the platform, we will first use Docker Engine to deploy Portainer, a user-friendly container management platform, that will help us with the onboarding of [the containers required](#opencti-production-containers).
 
 ### Connect to Azure VM via SSH
 
@@ -104,7 +104,7 @@ echo 'vm.max_map_count=1048575' | sudo tee --append /etc/sysctl.conf
 
 ```
 
-### Install Docker Enginer
+### Install Docker Engine
 
 Docker Engine is a powerful tool that enables us to encapsulate the OpenCTI platform and its dependencies within lightweight and portable containers. 
 
@@ -429,8 +429,8 @@ EOF
 
 ![Portainer Env Variables](assets/opencti-env-var.png)
 
-4. Run the file in Azure VM
-5. Take the output of the command and proceed to Portainer.
+- Run the file in Azure VM
+- Take the output of the command and proceed to Portainer.
 
 I have also generated the `opencti.env` file for you. <br>
 You can import it into Portainer and verify your variables using the following command:
