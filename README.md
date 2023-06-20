@@ -5,23 +5,23 @@ OpenCTI is an advanced and powerful platform that offers a wide range of capabil
 
 This guide will provide step-by-step instructions in implementing and configuring the OpenCTI platform. Additionally, it will walk you through the process of onboarding connectors and effectively obtaining data for the platform.
 
-- [Open Cybersecurity Threat Intelligence](#open-cybersecurity-threat-intelligence)
-  - [Azure Virtual Machine](#azure-virtual-machine)
-    - [Network Requirements](#network-requirements)
-  - [OpenCTI Prerequisites](#opencti-prerequisites)
-    - [Connect to Azure VM via SSH](#connect-to-azure-vm-via-ssh)
-      - [ElasticSearch Requirements](#elasticsearch-requirements)
-    - [Install Docker Enginer](#install-docker-enginer)
-    - [Install Portainer](#install-portainer)
-  - [Deploy OpenCTI Stack](#deploy-opencti-stack)
-    - [OpenCTI Production Containers](#opencti-production-containers)
-    - [Configure Env Variables](#configure-env-variables)
-    - [Sign in to OpenCTI](#sign-in-to-opencti)
-    - [Configure Connectors](#configure-connectors)
-      - [Connector Import Document](#connector-import-document)
-      - [**Connector MITRE Datasets**](#connector-mitre-datasets)
-      - [Connector Cybercrime Tracker](#connector-cybercrime-tracker)
-  - [Platform Overview](#platform-overview)
+- [Create Azure Virtual Machine](#azure-virtual-machine)
+  - [Network Requirements](#network-requirements)
+- [OpenCTI Prerequisites](#opencti-prerequisites)
+  - [SSH to the VM](#connect-to-azure-vm-via-ssh)
+    - [ElasticSearch Requirements](#elasticsearch-requirements)
+  - [Install Docker Enginer](#install-docker-enginer)
+  - [Install Portainer](#install-portainer)
+- [Deploy OpenCTI Stack](#deploy-opencti-stack)
+  - [OpenCTI Production Containers](#opencti-production-containers)
+  - [Configure Env Variables](#configure-env-variables)
+  - [Sign in to OpenCTI](#sign-in-to-opencti)
+  - [Configure Connectors](#configure-connectors)
+    - [Connector Import Document](#connector-import-document)
+    - [**Connector MITRE Datasets**](#connector-mitre-datasets)
+    - [Connector Cybercrime Tracker](#connector-cybercrime-tracker)
+- [Platform Overview](#platform-overview)
+    - [Conclude](#conclude)
 
 ## Azure Virtual Machine
 We will set up the product on a Linux Azure VM using the Ubuntu distribution. 
@@ -53,8 +53,10 @@ We will set up the product on a Linux Azure VM using the Ubuntu distribution.
 9. Review the summary and click on the "Create" button to start the VM creation process.
 
 Review The size and The Disk.
+
 ![Overview Size and Disk](assets/disk-size-opencti.png)
-Wait for the VM to be provisioned successfully.
+
+Now wait for the VM to be provisioned successfully.
 
 
 ### Network Requirements
@@ -381,7 +383,10 @@ Let's discuss the compose above, the services configured work together to provid
 They handle data storage, messaging, search capabilities, and various import/export operations.
 
 ### OpenCTI Production Containers
-| Service                        | Description                                                                                      |
+
+This is the initial setup of the OpenCTI platform production setup.
+
+| Containers                        | Description                                                                                      |
 |-------------------------------:|:----------------------------------------------------------------------------------------------|
 | redis                         | Provides a Redis database for caching and queuing.                                        |
 | elasticsearch              | Runs an Elasticsearch instance for full-text search and indexing of OpenCTI data. |
@@ -395,7 +400,7 @@ They handle data storage, messaging, search capabilities, and various import/exp
 | connector-import-file-stix        | Enables the import of STIX files into the OpenCTI platform.                                |
 | connector-import-document | Facilitates the import of various types of documents (PDF, plain text, HTML) into OpenCTI, extracting relevant information and creating indicators. |
 
-This is the initial setup of the OpenCTI platform. The implementation lays the foundation for seamless integration and ingestion of additional value from various sources further. 
+The implementation lays the foundation for seamless integration and ingestion of additional value from various sources further. 
 
 
 ### Configure Env Variables
@@ -589,3 +594,15 @@ Below is the main dashboard.
 
 > Product Techniques
 ![OpenCTI Arsenal](assets/techniques.png)
+
+
+
+#### Conclude
+
+Implementing an OpenCTI platform can significantly enhance your organization's threat intelligence capabilities, enabling proactive defense against cyber threats.
+
+The journey doesn't end there instead it starts. OpenCTI ecosystem offers a wide range of connectors and streams that can be further explored based on your organization's specific requirements. 
+
+Reference
+- [OpenCTI Ecosystem](https://www.notion.so/OpenCTI-Ecosystem-868329e9fb734fca89692b2ed6087e76)
+- [OpenCTI Documentation](https://docs.opencti.io/5.7.X/)
