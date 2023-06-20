@@ -1,17 +1,19 @@
 
 OpenCTI is an advanced and powerful platform that offers a wide range of capabilities for the management, analysis, and sharing of cyber threat intelligence.
 
+![OpenCTI Official Architecture](https://docs.opencti.io/5.7.X/deployment/assets/architecture.png)
+
 This guide will provide step-by-step instructions in implementing and configuring the OpenCTI platform. Additionally, it will walk you through the process of onboarding connectors and effectively obtaining data for the platform.
 
 - [Create Azure Virtual Machine](#azure-virtual-machine)
   - [Network Requirements](#network-requirements)
 - [OpenCTI Prerequisites](#opencti-prerequisites)
   - [SSH to the VM](#connect-to-azure-vm-via-ssh)
-    - [ElasticSearch Requirements](#elasticsearch-requirements)
-  - [Install Docker Engine](#install-docker-engine)
-  - [Install Portainer](#install-portainer)
+    - [ElasticSearch Memory](#elasticsearch-requirements)
+    - [Install Docker Engine](#install-docker-engine)
+    - [Install Portainer](#install-portainer)
 - [Deploy OpenCTI Stack](#deploy-opencti-stack)
-  - [OpenCTI Production Containers](#opencti-production-containers)
+  - [Production Containers](#opencti-production-containers)
   - [Configure Env Variables](#configure-env-variables)
   - [Sign in to OpenCTI](#sign-in-to-opencti)
   - [Configure Connectors](#configure-connectors)
@@ -169,7 +171,9 @@ Follow the instructions below to install and configure Portainer on your VM:
      - `"9000:9000"` to `"9900:9000"`
      - `"8000:8000"` to `"8800:8000"`
    - Ensure the specified ports are allowed in the firewall.
+
 **Deploy Portainer**
+
 5. Initialize the Docker swarm: 
 ```
 sudo docker swarm init
