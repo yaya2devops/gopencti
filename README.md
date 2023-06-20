@@ -18,7 +18,7 @@ This guide will provide step-by-step instructions in implementing and configurin
   - [Sign in to OpenCTI](#sign-in-to-opencti)
   - [Configure Connectors](#configure-connectors)
     - [Connector Import Document](#connector-import-document)
-    - [**Connector MITRE Datasets**](#connector-mitre-datasets)
+    - [Connector MITRE Datasets](#connector-mitre-datasets)
     - [Connector Cybercrime Tracker](#connector-cybercrime-tracker)
 - [Platform Overview](#platform-overview)
     - [Conclude](#conclude)
@@ -429,12 +429,16 @@ EOF
 3. Set a password for your `OPENCTI_ADMIN_PASSWORD` and change the values of `RABBITMQ_DEFAULT_PASS` and `OPENCTI_BASE_URL` to match your VM and port for OpenCTI.
 
 ![Portainer Env Variables](assets/opencti-env-var.png)
+
 4. Run the file in Azure VM
-5. Take the output of the command and proceed to Portainer. I have also generated the `opencti.env` file for you. You can import it into Portainer and verify your variables using the following command:
+5. Take the output of the command and proceed to Portainer.
+
+I have also generated the `opencti.env` file for you. <br>
+You can import it into Portainer and verify your variables using the following command:
 ```
 cat opencti.env
 ```
-1. Deploy your stack from Portainer 
+6. Deploy your stack from Portainer 
 
 ![OpenCTI Containers in Portainer](assets/opencti-stack-expand.png)
 
@@ -454,7 +458,7 @@ Connectors are how you receive and also send data on the OpenCTI platform.
 
 #### Connector Import Document
 
-The `connector-import-document` section is responsible for importing documents into the OpenCTI platform. It provides the following configuration options:
+The `connector-import-document` (included) is responsible for importing documents into the OpenCTI platform. It provides the following configuration options:
 ```YAML
   connector-import-document:
     image: opencti/connector-import-document:5.7.6
@@ -583,16 +587,16 @@ Below is the main dashboard.
 [White Mode Data](assets/opencti-with-data.png)
 ![OpenCTI Data](assets/opencti-with-data-dark.png)
 
-> S.N Configurations
+### Single Node
 ![OpenCTI Single Node](assets/single-node.png)
 
-> Product Indicator
+### Product Indicator
 ![OpenCTI Indicator](assets/product-observations.png)
 
-> Product Arsenal
+### Product Arsenal
 ![OpenCTI Arsenal](assets/opencti-arsenal.png)
 
-> Product Techniques
+### Product Techniques
 ![OpenCTI Arsenal](assets/techniques.png)
 
 
