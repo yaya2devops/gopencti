@@ -1,6 +1,4 @@
 
-# Open Cybersecurity Threat Intelligence
-
 OpenCTI is an advanced and powerful platform that offers a wide range of capabilities for the management, analysis, and sharing of cyber threat intelligence.
 
 This guide will provide step-by-step instructions in implementing and configuring the OpenCTI platform. Additionally, it will walk you through the process of onboarding connectors and effectively obtaining data for the platform.
