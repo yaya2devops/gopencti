@@ -132,21 +132,21 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 ```
 
-4. **Set up the Docker repository:** Configure the Docker repository by executing the following command:
+- **Set up the Docker repository:** Configure the Docker repository by executing the following command:
 
 ```sh
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-5. **Install Docker Engine:** Update the package lists and install Docker Engine along with the necessary dependencies using the following commands:
-
+- **Install Docker Engine:** Update the package lists and install Docker Engine along with the necessary dependencies using the following commands:
 
 ```sh
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-6. Enable the Docker service to start on system boot and grant the current user access to Docker. Run the following commands:
+- Enable the Docker service to start on system boot and grant the current user access to Docker. Run the following commands:
+  
 ```sh
 sudo systemctl enable --now docker
 sudo usermod -a -G docker $(whoami)
@@ -181,6 +181,7 @@ sudo docker stack deploy --compose-file=portainer-agent-stack.yml portainer
 7. Access Portainer at `http://<your-ip-address>:9900`.
 
 ![Portainer Sign In](assets/portainer-sign-in.png)
+
 Make sure to setup your `admin password` and Include other `users` if required.
 
 
@@ -404,7 +405,7 @@ The implementation lays the foundation for seamless integration and ingestion of
 ### Configure Env Variables
 
 1. Go back to your VM and observe the following environment variables.
-```
+```sh
 cat << EOF > opencti.env
 CONNECTOR_EXPORT_FILE_CSV_ID=$(cat /proc/sys/kernel/random/uuid)
 CONNECTOR_EXPORT_FILE_STIX_ID=$(cat /proc/sys/kernel/random/uuid)
@@ -436,7 +437,8 @@ You can import it into Portainer and verify your variables using the following c
 ```
 cat opencti.env
 ```
-6. Deploy your stack from Portainer 
+
+- Deploy your stack from Portainer 
 
 ![OpenCTI Containers in Portainer](assets/opencti-stack-expand.png)
 
@@ -451,7 +453,7 @@ Use the specified password and email in the environment variables to connect.
 
 
 
-### Configure Connectors
+## Configure Connectors
 Connectors are how you receive and also send data on the OpenCTI platform.
 
 #### Connector Import Document
