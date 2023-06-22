@@ -430,22 +430,26 @@ EOF
 ```
 2. Generate a unique UUID, you can use `/proc/sys/kernel/random/uuid` from the kernel. Alternatively, you can generate it online using a website like [UUID Generator](https://www.uuidgenerator.net/version4).
 3. Set a password for your `OPENCTI_ADMIN_PASSWORD` and change the values of `RABBITMQ_DEFAULT_PASS` and `OPENCTI_BASE_URL` to match your VM and port for OpenCTI.
-
-![Portainer Env Variables](assets/opencti-env-var.png)
-
-- Run the file in Azure VM
-- Take the output of the command and proceed to Portainer.
+4. Run the file in Azure VM
+5. Take the output of the command and proceed to Portainer.
 
 I have also generated the `opencti.env` file for you. <br>
+
 You can import it into Portainer and verify your variables using the following command:
 ```
 cat opencti.env
 ```
 
+![Portainer Env Variables](assets/opencti-env-var.png)
+
+
 - Deploy your stack from Portainer 
 
 ![OpenCTI Containers in Portainer](assets/opencti-stack-expand.png)
 
+- Expand on all processes and running containers.
+
+![OpenCTI Full Portainer View](https://raw.githubusercontent.com/yaya2devops/sec-OpenCTI/main/assets/2-opencti-portainer-stacks.png?token=GHSAT0AAAAAACC3C4ZGMG4KOP6W5DAPRXJ6ZEU2U5Q)
 
 ### Sign in to OpenCTI
 Once the deployment is complete, your application should be running on `vm-ip:8080`. 
@@ -454,13 +458,23 @@ Once the deployment is complete, your application should be running on `vm-ip:80
 
 Use the specified password and email in the environment variables to connect.
 
+<details> 
+<summary> 
+Expand on single node configuration
+</summary>
+  
+![OpenCTI Single Node](assets/single-node.png)
+
+</details>
+
+At this point, the platform should looks fresh **without data**.
 
 
 
 ## Configure Connectors
-Connectors are how you receive and also send data on the OpenCTI platform.
+To do so, Connectors are how you receive and also send data on the OpenCTI platform.
 
-#### Connector Import Document
+#### **Connector Import Document**
 
 The `connector-import-document` (included) is responsible for importing documents into the OpenCTI platform. It provides the following configuration options:
 ```YAML
@@ -535,7 +549,7 @@ The `connector-mitre` section is responsible for importing MITRE datasets into t
   - `CONNECTOR_LOG_LEVEL`: The logging level of the connector.
   - `MITRE_INTERVAL`: The interval in days for updating MITRE datasets.
 
-####  Connector Cybercrime Tracker
+####  **Connector Cybercrime Tracker**
 
 The `connector-cybercrimetracker` section is responsible for importing data from Cybercrime-Tracker into the OpenCTI platform.
 ```yaml
@@ -588,19 +602,49 @@ After sometimes, the connectors will take effect and you will see data getting t
 
 Below is the main dashboard.
 
-[White Mode Data](assets/opencti-with-data.png)
+[White Mode](assets/opencti-with-data.png)
 ![OpenCTI Data](assets/opencti-with-data-dark.png)
 
-### Single Node
-![OpenCTI Single Node](assets/single-node.png)
 
 ### Product Indicator
+This is centralized repository for managing and storing indicators.
+
+OpenCTI supports a wide range of indicator types some of them are listed below.
+| Indicator Types    | Description                                   |
+|--------------------|-----------------------------------------------|
+| IP addresses       | Numerical label assigned to devices in a network|
+| Domain names       | Identifiers for websites or network resources  |
+| URLs               | Web addresses                                 |
+| Hashes             | Cryptographic representations of data          |
+| Email addresses    | Unique identifiers for email accounts          |
+| File names         | Names of files or executables                  |
+
+
+Indicator also offers visualizations and analysis tools to explore relationships between indicators, identify patterns, and gain insights into potential threats or attack campaigns.
+
 ![OpenCTI Indicator](assets/product-observations.png)
 
 ### Product Arsenal
+The Arsenal serves as a repository for various tools and utilities that can be used during the analysis process. Security engineers and operators can find a collection of scripts, software, and other resources that are commonly used in the field of threat intelligence.
+
+Arsenal covers a wide range of tasks incl.
+- data enrichment
+- Security critical analysis
+- Malware investigation
+
 ![OpenCTI Arsenal](assets/opencti-arsenal.png)
 
+
 ### Product Techniques
+
+Techniques allows security analysts and investigators to document and share their knowledge about specific techniques used by threat actors e.g various tactics, procedures, and tools employed during cyber attacks. 
+
+- Enables knowledge sharing about threat actor techniques.
+- Offers detailed descriptions of techniques, including methods and impact.
+- Supports cross-referencing with other entities for a comprehensive view.
+
+The information exposed in here can help others security leaders to better understand and respond to potential threats.
+
 ![OpenCTI Arsenal](assets/techniques.png)
 
 
