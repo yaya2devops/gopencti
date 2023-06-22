@@ -610,6 +610,7 @@ Below is the main dashboard.
 This is centralized repository for managing and storing indicators.
 
 OpenCTI supports a wide range of indicator types some of them are listed below.
+
 | Indicator Types    | Description                                   |
 |--------------------|-----------------------------------------------|
 | IP addresses       | Numerical label assigned to devices in a network|
