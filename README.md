@@ -14,7 +14,7 @@ This guide will provide step-by-step instructions in implementing and configurin
     - [Install Portainer](#install-portainer)
 - [Deploy OpenCTI Stack](#deploy-opencti-stack)
   - [ Production Containers](#opencti-production-containers)
-  - [Environnement Variables](#configure-env-variables)
+  - [Environment Variables](#configure-env-variables)
   - [OpenCTI Sign-Ins](#sign-in-to-opencti)
   - [Configure Connectors](#configure-connectors)
     - [Import Document](#connector-import-document)
