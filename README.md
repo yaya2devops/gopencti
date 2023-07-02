@@ -5,26 +5,25 @@ OpenCTI is an advanced and powerful platform that offers a wide range of capabil
 
 This guide will provide step-by-step instructions in implementing and configuring the OpenCTI platform. Additionally, it will walk you through the process of onboarding connectors and effectively obtaining data for the platform.
 
-- [Azure Virtual Machine](#azure-virtual-machine)
+- [Create Azure Linux VM](#azure-virtual-machine)
   - [Network Requirements](#network-requirements)
 - [OpenCTI Prerequisites](#opencti-prerequisites)
-  - [Connect to Azure VM via SSH](#connect-to-azure-vm-via-ssh)
-    - [**ElasticSearch Requirements**](#elasticsearch-requirements)
-  - [**Install Docker Engine**](#install-docker-engine)
-  - [**Install Portainer**](#install-portainer)
-- [**Deploy OpenCTI Stack**](#deploy-opencti-stack)
-  - [**OpenCTI Production Containers**](#opencti-production-containers)
-  - [Configure Env Variables](#configure-env-variables)
-  - [Sign in to OpenCTI](#sign-in-to-opencti)
-- [Configure Connectors](#configure-connectors)
-    - [**Connector Import Document**](#connector-import-document)
-    - [**Connector MITRE Datasets**](#connector-mitre-datasets)
-    - [**Connector Cybercrime Tracker**](#connector-cybercrime-tracker)
+  - [SSH to the VM](#connect-to-azure-vm-via-ssh)
+    - [ElasticSearch Requirements](#elasticsearch-requirements)
+    - [Install Docker Engine](#install-docker-engine)
+    - [Install Portainer](#install-portainer)
+- [Deploy OpenCTI Stack](#deploy-opencti-stack)
+  - [ Production Containers](#opencti-production-containers)
+  - [Environnement Variables](#configure-env-variables)
+  - [OpenCTI Sign-Ins](#sign-in-to-opencti)
+  - [Configure Connectors](#configure-connectors)
+    - [Import Document](#connector-import-document)
+    - [MITRE Datasets](#connector-mitre-datasets)
+    - [Cybercrime Tracker](#connector-cybercrime-tracker)
 - [Platform Overview](#platform-overview)
   - [Product Indicator](#product-indicator)
   - [Product Arsenal](#product-arsenal)
   - [Product Techniques](#product-techniques)
-    - [Conclude](#conclude)
 
 ## Azure Virtual Machine
 We will set up the product on a Linux Azure VM using the Ubuntu distribution. 
@@ -55,7 +54,7 @@ We will set up the product on a Linux Azure VM using the Ubuntu distribution.
    - Leave default for now
 9. Review the summary and click on the "Create" button to start the VM creation process.
 
-Review The size and The Disk.
+> Review The size, The Disk.
 
 ![Overview Size and Disk](assets/disk-size-opencti.png)
 
@@ -106,7 +105,6 @@ First make sure to Increase Virtual Memory for ElasticSearch container.
 ```sh
 sudo sysctl -w vm.max_map_count=1048575
 echo 'vm.max_map_count=1048575' | sudo tee --append /etc/sysctl.conf
-
 ```
 
 ### **Install Docker Engine**
