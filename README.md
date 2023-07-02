@@ -5,22 +5,25 @@ OpenCTI is an advanced and powerful platform that offers a wide range of capabil
 
 This guide will provide step-by-step instructions in implementing and configuring the OpenCTI platform. Additionally, it will walk you through the process of onboarding connectors and effectively obtaining data for the platform.
 
-- [Create Azure Virtual Machine](#azure-virtual-machine)
+- [Azure Virtual Machine](#azure-virtual-machine)
   - [Network Requirements](#network-requirements)
 - [OpenCTI Prerequisites](#opencti-prerequisites)
-  - [SSH to the VM](#connect-to-azure-vm-via-ssh)
-    - [ElasticSearch Memory](#elasticsearch-requirements)
-    - [Install Docker Engine](#install-docker-engine)
-    - [Install Portainer](#install-portainer)
-- [Deploy OpenCTI Stack](#deploy-opencti-stack)
-  - [Production Containers](#opencti-production-containers)
+  - [Connect to Azure VM via SSH](#connect-to-azure-vm-via-ssh)
+    - [**ElasticSearch Requirements**](#elasticsearch-requirements)
+  - [**Install Docker Engine**](#install-docker-engine)
+  - [**Install Portainer**](#install-portainer)
+- [**Deploy OpenCTI Stack**](#deploy-opencti-stack)
+  - [**OpenCTI Production Containers**](#opencti-production-containers)
   - [Configure Env Variables](#configure-env-variables)
   - [Sign in to OpenCTI](#sign-in-to-opencti)
-  - [Configure Connectors](#configure-connectors)
-    - [ Import Document](#connector-import-document)
-    - [ MITRE Datasets](#connector-mitre-datasets)
-    - [ Cybercrime Tracker](#connector-cybercrime-tracker)
+- [Configure Connectors](#configure-connectors)
+    - [**Connector Import Document**](#connector-import-document)
+    - [**Connector MITRE Datasets**](#connector-mitre-datasets)
+    - [**Connector Cybercrime Tracker**](#connector-cybercrime-tracker)
 - [Platform Overview](#platform-overview)
+  - [Product Indicator](#product-indicator)
+  - [Product Arsenal](#product-arsenal)
+  - [Product Techniques](#product-techniques)
     - [Conclude](#conclude)
 
 ## Azure Virtual Machine
@@ -96,7 +99,7 @@ ssh -i <private key path> cti-user@vm-ip
 ```
 Replace `<private key path>` with the path to your SSH private key file, and `vm-ip` with the IP address of your Azure VM.
 
-#### ElasticSearch Requirements
+#### **ElasticSearch Requirements**
 
 First make sure to Increase Virtual Memory for ElasticSearch container.
 
@@ -106,7 +109,7 @@ echo 'vm.max_map_count=1048575' | sudo tee --append /etc/sysctl.conf
 
 ```
 
-### Install Docker Engine
+### **Install Docker Engine**
 
 Docker Engine is a powerful tool that enables us to encapsulate the OpenCTI platform and its dependencies within lightweight and portable containers. 
 
@@ -131,7 +134,6 @@ sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
 ```
 
 - **Set up the Docker repository:** Configure the Docker repository by executing the following command:
@@ -155,7 +157,7 @@ sudo usermod -a -G docker $(whoami)
 ```
 
 
-### Install Portainer
+### **Install Portainer**
 
 We will leverage Portainer capabilities to effortlessly deploy our entire OpenCTI platform stack, including all the required services and components.
 
@@ -170,7 +172,7 @@ Follow the instructions below to install and configure Portainer on your VM:
    - Modify the port mappings:
      - `"9000:9000"` to `"9900:9000"`
      - `"8000:8000"` to `"8800:8000"`
-   - Ensure the specified ports are allowed in the firewall.
+   - Ensure the specified ports are allowed in the [firewall](#network-requirements)
 
 **Deploy Portainer**
 
@@ -190,7 +192,7 @@ Make sure to setup your `admin password` and Include other `users` if required.
 
 
 
-## Deploy OpenCTI Stack
+## **Deploy OpenCTI Stack**
 
 To deploy the entire OpenCTI stack using Portainer, follow these steps:
 
@@ -385,9 +387,9 @@ Let's discuss the compose above, the services configured work together to provid
 
 They handle data storage, messaging, search capabilities, and various import/export operations.
 
-### OpenCTI Production Containers
+### **OpenCTI Production Containers**
 
-This is the initial setup of the OpenCTI platform production setup.
+This is the initial Containers of the OpenCTI platform production setup.
 
 | Containers                        | Description                                                                                      |
 |-------------------------------:|:----------------------------------------------------------------------------------------------|
@@ -431,43 +433,37 @@ EOF
 2. Generate a unique UUID, you can use `/proc/sys/kernel/random/uuid` from the kernel. Alternatively, you can generate it online using a website like [UUID Generator](https://www.uuidgenerator.net/version4).
 3. Set a password for your `OPENCTI_ADMIN_PASSWORD` and change the values of `RABBITMQ_DEFAULT_PASS` and `OPENCTI_BASE_URL` to match your VM and port for OpenCTI.
 4. Run the file in Azure VM
-5. Take the output of the command and proceed to Portainer.
 
 I have also generated the `opencti.env` file for you. <br>
 
-You can import it into Portainer and verify your variables using the following command:
+Verify your variables using the following command:
 ```
 cat opencti.env
 ```
+You can now import it into Portainer.
 
+- Take the output and proceed to Portainer.
 ![Portainer Env Variables](assets/opencti-env-var.png)
 
 
-- Deploy your stack from Portainer 
+- Configure and deploy your stack from Portainer 
 
 ![OpenCTI Containers in Portainer](assets/opencti-stack-expand.png)
 
 - Expand on all processes and running containers.
 
-![OpenCTI Full Portainer View](https://raw.githubusercontent.com/yaya2devops/sec-OpenCTI/main/assets/2-opencti-portainer-stacks.png?token=GHSAT0AAAAAACC3C4ZGMG4KOP6W5DAPRXJ6ZEU2U5Q)
+![OpenCTI Full Portainer View](assets/expand-processes.png)
 
 ### Sign in to OpenCTI
 Once the deployment is complete, your application should be running on `vm-ip:8080`. 
 
+[Sign-In ](assets/ip-poc.png)
 ![Sign In Webpage OpenCTI](assets/opencti-sign-in.png)
 
 Use the specified password and email in the environment variables to connect.
 
-<details> 
-<summary> 
-Expand on single node configuration
-</summary>
-  
-![OpenCTI Single Node](assets/single-node.png)
+[OpenCTI Process](assets/single-node.png)
 
-</details>
-
-At this point, the platform should looks fresh **without data**.
 
 
 
@@ -476,7 +472,7 @@ To do so, Connectors are how you receive and also send data on the OpenCTI platf
 
 #### **Connector Import Document**
 
-The `connector-import-document` (included) is responsible for importing documents into the OpenCTI platform. It provides the following configuration options:
+The `connector-import-document` (included) is responsible for importing documents into the OpenCTI platform. 
 ```YAML
   connector-import-document:
     image: opencti/connector-import-document:5.7.6
@@ -644,7 +640,7 @@ Techniques allows security analysts and investigators to document and share thei
 - Offers detailed descriptions of techniques, including methods and impact.
 - Supports cross-referencing with other entities for a comprehensive view.
 
-The information exposed in here can help others security leaders to better understand and respond to potential threats.
+The information exposed in here can help other security leaders *better understand and respond* to potential threats.
 
 ![OpenCTI Arsenal](assets/techniques.png)
 

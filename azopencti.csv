@@ -1,0 +1,20 @@
+﻿NAME,TYPE,LOCATION
+Batch_Sender,Logic app,Canada Central
+Detect-VM_Azure-Alerts-Integration,Activity log alert rule,Global
+microsoftgraphsecurity,API Connection,Canada Central
+microsoftgraphsecurity-1,API Connection,Canada Central
+Microsoftgraphsecurity-OpenCTI-ImportToSentinel-1,API Connection,Canada Central
+Microsoftgraphsecurity-OpenCTI-ImportToSentinel-In,API Connection,Canada Central
+open-cti,SSH key,Canada Central
+OpenCTI-ImportToSentinel-1,Logic app,Canada Central
+OpenCTI-ImportToSentinel-In,Logic app,Canada Central
+OpenCTICustomConnector,Logic apps custom connector,Canada Central
+Str-OpenCTI-VM-Stack,Virtual machine,Canada Central
+Str-OpenCTI-VM-Stack-ip,Public IP address,Canada Central
+Str-OpenCTI-VM-Stack-nsg,Network security group,Canada Central
+Str-OpenCTI-VM-Stack-vnet,Virtual network,Canada Central
+str-opencti-vm-stack850_z1,Network Interface,Canada Central
+Str-OpenCTI-VM-Stack_DataDisk_0,Disk,Canada Central
+Str-OpenCTI-VM-Stack_OsDisk_1_25ac008eedaf48c28205ba3e03d05a3d,Disk,Canada Central
+test-opencti,Logic app,Canada Central
+zenduty-integration-opencti-vm,Activity log alert rule,Global
