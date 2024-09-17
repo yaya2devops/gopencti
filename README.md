@@ -1,3 +1,6 @@
+Looking back, it's comical. My former supervisor, a KPMG cybersecurity executive director, [dump me these exact instructions](https://1drv.ms/w/c/34f2af6ddee96a23/EaseJqB4ZvFNmpuASmOGHn8BBBi-oMXnOXjJV2dj0EXy6g?e=C8ep8F) via Microsoft Teams message "as is" right after GPT's release telling me to get it done. That's the level of guidance you can expect at such level.
+
+Anyway, I tried asking for help but ended up performing it myself below and [pushing the solution for others](https://github.com/OpenCTI-Platform/docker/issues/88).
 
 OpenCTI is an advanced and powerful platform that offers a wide range of capabilities for the management, analysis, and sharing of cyber threat intelligence.
 
