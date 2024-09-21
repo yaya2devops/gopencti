@@ -1,4 +1,4 @@
-Looking back, it's comical. My former supervisor, a KPMG cybersecurity executive director, [dumping me these exact instructions](https://1drv.ms/w/c/34f2af6ddee96a23/EaseJqB4ZvFNmpuASmOGHn8BBBi-oMXnOXjJV2dj0EXy6g?e=C8ep8F) via Microsoft Teams message "as is" right after GPT's release telling me to get it done. That's the level of guidance you can expect at such level.
+Looking back, it's comical. My former supervisor, a KPMG cybersecurity executive director, [dumping me these exact instructions](https://1drv.ms/w/c/34f2af6ddee96a23/EaseJqB4ZvFNmpuASmOGHn8BBBi-oMXnOXjJV2dj0EXy6g?e=C8ep8F) via Microsoft Teams message "as is" right after GPT's release telling me to get it done. It wasn't even converted to the proper format; [I did it](https://create.ya-ya.tech/devsecops/custom-TI.pdf) afterward. That's the level of guidance you can expect at such level.
 
 Anyway, I tried asking for help but ended up performing it myself below. 
 
