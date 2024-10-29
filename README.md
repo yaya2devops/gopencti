@@ -74,8 +74,9 @@ Let's configure the required port from now to make sure we can access our app wh
 
 Replace "Source IP Group" with the appropriate IP address range or security group that you want to allow access from for each rule, to get started you can simply specify your ip address.
 
-![Inbound Rules Networking VM](assets/inbound-opencti.png)
+[Full asset here.](assets/inbound-opencti.png)
 
+![Inbound Rules Networking VM](assets/edit-inbound-opencti.png)
 
 
 **Note:** It is highly recommended to restrict the source IP addresses to a specific group rather than allowing traffic from "Any" to improve security.
@@ -92,7 +93,7 @@ We picked Azure Vm as our host for the platform, we will first use Docker Engine
 3. Provide a path to your SSH private key file. Replace `<keyname>` with the name of your private key file.
 Private key path: `~/.ssh/<keyname>.pem`
 4. Run the following command to connect to your VM:
-```
+```sh
 ssh -i <private key path> cti-user@vm-ip
 ```
 Replace `<private key path>` with the path to your SSH private key file, and `vm-ip` with the IP address of your Azure VM.
@@ -174,11 +175,11 @@ Follow the instructions below to install and configure Portainer on your VM:
 **Deploy Portainer**
 
 5. Initialize the Docker swarm: 
-```
+```sh
 sudo docker swarm init
 ```
 6. Deploy the Portainer stack: 
-```
+```sh
 sudo docker stack deploy --compose-file=portainer-agent-stack.yml portainer
 ```
 7. Access Portainer at `http://<your-ip-address>:9900`.
@@ -197,9 +198,18 @@ To deploy the entire OpenCTI stack using Portainer, follow these steps:
 2. Navigate to the **Stacks** section.
 3. Click on **Add Stack** to create a new stack.
 4. Provide a name for the stack (e.g., `opencti`).
-5. In the **Web editor** tab, paste the following configuration into the `docker-compose.yml` file:
+5. In the **Web editor** tab, 
 
-```YAML
+<details>
+
+<summary>
+
+Paste the following configuration into the `docker-compose.yml` file:
+
+</summary>
+
+
+```yaml
 version: '3'
 services:
   redis:
@@ -380,6 +390,9 @@ volumes:
   amqpdata:
 ```
 
+</details>
+
+
 Let's discuss the compose above, the services configured work together to provide the necessary functionality for the OpenCTI platform. 
 
 They handle data storage, messaging, search capabilities, and various import/export operations.
@@ -434,7 +447,7 @@ EOF
 I have also generated the `opencti.env` file for you. <br>
 
 Verify your variables using the following command:
-```
+```sh
 cat opencti.env
 ```
 You can now import it into Portainer.
@@ -470,7 +483,7 @@ To do so, Connectors are how you receive and also send data on the OpenCTI platf
 #### **Connector Import Document**
 
 The `connector-import-document` (included) is responsible for importing documents into the OpenCTI platform. 
-```YAML
+```yaml
   connector-import-document:
     image: opencti/connector-import-document:5.7.6
     environment:
